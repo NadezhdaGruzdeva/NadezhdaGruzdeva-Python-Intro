@@ -31,7 +31,7 @@ while sweetsQty > 0:
     else:
         if sweetsQty > maxTeakeSwets:
             if sweetsQty % (maxTeakeSwets + 1) == 0:
-                takeSwets = random.randint(1, sweetsQty + 1)
+                takeSwets = random.randint(1, maxTeakeSwets)
             else:
                 takeSwets = sweetsQty % (maxTeakeSwets + 1)
         else: 

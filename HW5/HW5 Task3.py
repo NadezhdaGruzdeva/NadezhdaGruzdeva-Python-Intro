@@ -43,12 +43,12 @@ def ToFull(hash_str):
     print(f"\033[33m{full_str}\033[0m - The hash string" )
     return full_str
 
-with open(r'C:\Users\Nadezhda\Desktop\Geek Brains\Python introduction\HW5\hw5 InitialText.txt', 'r', encoding='utf-8') as full:
+with open('hw5 InitialText.txt', 'r', encoding='utf-8') as full:
     my_str = full.read()
-with open(r'C:\Users\Nadezhda\Desktop\Geek Brains\Python introduction\HW5\hw5 hash.txt', 'w', encoding='utf-8') as hash:
+with open('hw5 hash.txt', 'w', encoding='utf-8') as hash:
     hash.write(ToHash(my_str))
 
-with open(r'C:\Users\Nadezhda\Desktop\Geek Brains\Python introduction\HW5\hw5 hash.txt', 'r', encoding='utf-8') as hash:
+with open('hw5 hash.txt', 'r', encoding='utf-8') as hash:
     my_str = hash.read()
-with open(r'C:\Users\Nadezhda\Desktop\Geek Brains\Python introduction\HW5\hw5 InitialText.txt', 'w', encoding='utf-8') as full:
+with open('hw5 InitialText.txt', 'w', encoding='utf-8') as full:
     full.write(ToFull(my_str))

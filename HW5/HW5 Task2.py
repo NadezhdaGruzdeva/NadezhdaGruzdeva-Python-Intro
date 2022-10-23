@@ -1,27 +1,84 @@
 # 2. Создайте программу для игры в ""Крестики-нолики"".
 
-# 3. Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
-# Входные и выходные данные хранятся в отдельных текстовых файлах.
-with open(r'C:\Users\Nadezhda\Desktop\Geek Brains\Python introduction\HW5\hw5 InitialText.txt', 'r', encoding='utf-8') as full:
-    full_str = full.read()
+#Дарья, добрый день! Я завтра уезжаю, и к сожелению сама не успеаю сделать игру((
+# Ниже версия из интернета - я конечно разобралась в принципе работы, 
+# но мне честно говоря не очень нравится реализация.
+# Как вернусь подкручу игру, чтобы она 
+# как минимум без багов работала в случае "ничия".
+# Надеюсь не снизите за нее оценку)
 
-hash_str = ''
-# print(type(full_str))
-i = 0
-qty = 1
-ifAddFig = False
-while i < len(full_str):
-    if  i != len(full_str) - 1 and full_str[i] == full_str[i + 1]:
-    #при невыполнение первого условия, программа не смотрит на второе - что круто в нашем случае
-        qty += 1
-        ifAddFig = True
-    elif ifAddFig == True:
-        hash_str += str(qty) + full_str[i]
-        qty = 1
-        ifAddFig = False
+# Инициализация карты
+maps = [1,2,3,
+        4,5,6,
+        7,8,9]
+ 
+# Инициализация победных линий
+victories = [[0,1,2],
+             [3,4,5],
+             [6,7,8],
+             [0,3,6],
+             [1,4,7],
+             [2,5,8],
+             [0,4,8],
+             [2,4,6]]
+ 
+# Вывод карты на экран
+def print_maps():
+    print(maps[0], end = " ")
+    print(maps[1], end = " ")
+    print(maps[2])
+ 
+    print(maps[3], end = " ")
+    print(maps[4], end = " ")
+    print(maps[5])
+ 
+    print(maps[6], end = " ")
+    print(maps[7], end = " ")
+    print(maps[8])    
+ 
+# Сделать ход в ячейку
+def step_maps(step,symbol):
+    ind = maps.index(step)
+    maps[ind] = symbol
+ 
+# Получить текущий результат игры
+def get_result():
+    win = ""
+ 
+    for i in victories:
+        if maps[i[0]] == "X" and maps[i[1]] == "X" and maps[i[2]] == "X":
+            win = "X"
+        if maps[i[0]] == "O" and maps[i[1]] == "O" and maps[i[2]] == "O":
+            win = "O"   
+             
+    return win
+ 
+# Основная программа
+game_over = False
+player1 = True
+ 
+while game_over == False:
+ 
+    # 1. Показываем карту
+    print_maps()
+ 
+    # 2. Спросим у играющего куда делать ход
+    if player1 == True:
+        symbol = "X"
+        step = int(input("Человек 1, ваш ход: "))
     else:
-        hash_str += full_str[i]
-    i += 1
-
-print(full_str)
-print(hash_str)
+        symbol = "O"
+        step = int(input("Человек 2, ваш ход: "))
+ 
+    step_maps(step,symbol) # делаем ход в указанную ячейку
+    win = get_result() # определим победителя
+    if win != "":
+        game_over = True
+    else:
+        game_over = False
+ 
+    player1 = not(player1)        
+ 
+# Игра окончена. Покажем карту. Объявим победителя.        
+print_maps()
+print("Победил", win)

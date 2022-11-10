@@ -81,6 +81,61 @@ print(formula)
 with open('Task34 Sum of Polnominals.txt', 'x') as s:
     s.write(formula)
 
+44. Напишите программу вычисления арифметического выражения заданного строкой. Используйте операции +,-,/,*. приоритет операций стандартный.
+	Пример:
+2+2 => 4;
+1+2*3 => 7;
+1-2*3 => -5;
+**Добавьте возможность использования скобок, меняющих приоритет операций.
+	Пример:
+1+2*3 => 7;
+(1+2)*3 => 9;
+доп. Напишите функцию any_duplicates, которая принимает двумерный массив размера 3х3 (9 элементов). Двумерный массив заполнен числами от 1 до 9.
+Функция должна вернуть False, если в массиве все числа от 1 до 9 встречаются ровно один раз. В противном случае True.
+[[1, 3, 2], [9, 7, 8], [4, 5, 6]] ➞ False
+[[8, 9, 2], [5, 6, 1], [3, 7, 4]] ➞ False
+[[1, 1, 3], [6, 5, 4], [8, 7, 9]] ➞ True # 1 дублируется
+[[1, 2, 3], [3, 4, 5], [9, 8, 7]] ➞ True # 3 дублируется
+
+
+string = '1+23*3-2*4'
+
+def list_from_string(string:str):
+
+    result = []
+    temp = 0
+    for i in range(0, len(string)):
+
+        if not string[i].isalnum():
+            result.append(string[temp:i])
+            result.append(string[i])
+            temp = i + 1
+
+    result.append(string[temp:])
+    print(result)
+
+    return result
+
+def simple_math(operation:list):
+    if operation[1] == '/':
+        return [str(float(operation[0]) / float(operation[2]))]
+    if operation[1] == '*':
+        return [str(float(operation[0]) * float(operation[2]))]
+    if operation[1] == '+':
+        return [str(float(operation[0]) + float(operation[2]))]
+    if operation[1] == '-':
+        return [str(float(operation[0]) - float(operation[2]))]
+def do_math(equation:list):
+
+    while len(equation) != 1:
+        for sign in '/*+-':
+            while sign in equation:
+                idx = equation.index(sign)
+                equation = equation[:idx-1] + simple_math(equation[idx-1:idx+2]) + equation[idx+2:]
+
+    return equation
+
+print(do_math(list_from_string(string)))
 
 
 

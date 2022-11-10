@@ -85,3 +85,6 @@ def CreateListFromNegatToPositive(N):
             myList.append(i)
             indexForMyList -= 1
     return(myList)   
+
+#Классный ввод списка через map
+my_list = list(map(int, input("Enter the list of numbers devided by space: ").split()))  

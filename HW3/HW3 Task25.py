@@ -17,4 +17,5 @@ def ToBinary(number):
     return strFig
 
 n = int(input('Enter the number \n'))
-print (f'Binary number of {n} = {ToBinary(n)}.')
+print (f'Deciml number {n} = binary number {ToBinary(n)}.')
+

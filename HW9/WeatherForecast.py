@@ -5,7 +5,7 @@ from mySupersecretToken import Get_my_Tg_taken, Get_my_Weather_taken
 
 # https://www.youtube.com/watch?v=fa1FUW1jLAE&ab_channel=PythonToday
 
-def get_weather(city, open_weather_token):
+def Get_weather(city, open_weather_token):
 
     code_to_smile = { #билиотека состояний погоды с эмоджи в значении
         "Clear": "Ясно \U00002600",
@@ -41,20 +41,20 @@ def get_weather(city, open_weather_token):
         length_of_the_day = datetime.datetime.fromtimestamp(data["sys"]["sunset"]) - datetime.datetime.fromtimestamp(
             data["sys"]["sunrise"])
 
-        print(f"***{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}***\n"
+        return (f"***{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}***\n"
               f"Погода в городе: {city}\nТемпература: {cur_weather}C° {wd}\n"
               f"Влажность: {humidity}%\nДавление: {pressure} мм.рт.ст\nВетер: {wind} м/с\n"
               f"Восход солнца: {sunrise_timestamp}\nЗакат солнца: {sunset_timestamp}\nПродолжительность дня: {length_of_the_day}\n"
-              f"Хорошего дня!"
-              )
+              f"Хорошего дня!")
+              
     except Exception as ex:
-        print(ex)
-        print("Проверьте название города")
+        # print(ex)
+        return "Проверьте название города"
 
 
 def main():
     city = input("Введите город: ")
-    get_weather(city, Get_my_Weather_taken())
+    print(Get_weather(city, Get_my_Weather_taken()))
 
 
 if __name__ == '__main__':

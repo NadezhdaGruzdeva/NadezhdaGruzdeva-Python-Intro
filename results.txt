@@ -1,0 +1,1 @@
+(5)C:/Users/Nadezhda/AppData/Local/Microsoft/WindowsApps/python3.10.exe "c:/Users/Nadezhda/Desktop/Geek Brains/Python introduction/HW7/view.py"(5) = 

@@ -22,7 +22,7 @@ def Get_weather(city, open_weather_token):
             f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={open_weather_token}&units=metric"
         )
         data = r.json()
-        # pprint(data) #pprint красиво (не строкой) выводит json 
+        pprint(data) #pprint красиво (не строкой) выводит json 
 
         city = data["name"] 
         cur_weather = data["main"]["temp"] #из json удобно забирать: как из списков по ключам

@@ -16,10 +16,10 @@ def Get_weather(city, open_weather_token):
         "Snow": "Снег \U0001F328",
         "Mist": "Туман \U0001F32B"
     }
-
+    open_weather_token = Get_my_Weather_taken()
     try:
         r = requests.get(
-            f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={Get_my_Weather_taken()}&units=metric"
+            f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={open_weather_token}&units=metric"
         )
         data = r.json()
         # pprint(data) #pprint красиво (не строкой) выводит json 

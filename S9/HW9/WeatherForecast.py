@@ -1,4 +1,4 @@
-import requests
+import requests #pip install requests
 import datetime
 from pprint import pprint # выводит красиво json, раскладывая по полочкам
 from mySupersecretToken import Get_my_Tg_taken, Get_my_Weather_taken

@@ -2,9 +2,9 @@ import telegram
 from telegram import Update  #pip install python-telegram-bot
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from telegram.ext import Updater, CommandHandler, CallbackContext, Filters, MessageHandler, CallbackQueryHandler
-# from spy import *
 from mySupersecretToken import Get_my_Tg_taken
-
+# развернула этот код на сервере https://www.pythonanywhere.com/
+# по вот этой инструкции https://blog.pythonanywhere.com/148/
 
 def log(update: Update, context: CallbackContext):
     file = open('db.csv', 'a')
